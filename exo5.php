@@ -19,7 +19,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/serie.css">
     <title>Introduction PHP - Exo 5</title>
 </head>
 
@@ -49,7 +49,14 @@ try {
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt">Récupérer dans un tableau puis afficher l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
             <div class="exercice-sandbox">
-                
+                <?php
+                    $arrayAvailableOn = array_map(function ($serie){
+                        return $serie['availableOn'];
+                    }, $series);
+                    $arrayPlatForm = array_unique($arrayAvailableOn);
+                    sort($arrayPlatForm);
+                    var_dump($arrayPlatForm);
+                ?>
             </div>
         </section>
 
@@ -59,7 +66,19 @@ try {
             <p class="exercice-txt">Afficher la liste de toutes les séries avec l'image principale et son titre</p>
             <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran d'ordinateur.</p>
             <div class="exercice-sandbox">
+                <ul class="series">
 
+                    <?php
+                        foreach ($series as $serie){
+                            if (key_exists('style', $_GET) && in_array($_GET['style'], $serie['styles'])){
+                            echo "<li class=\"serie-container\"><h3>{$serie['name']}</h3><a href='?serie={$serie['id']}'><img class=\"serie-img\" src={$serie['image']}></a></li>";
+                        }
+                        else if(!key_exists('style', $_GET)) {
+                            echo "<li class=\"serie-container\"><h3>{$serie['name']}</h3><a href='?serie={$serie['id']}'><img class=\"serie-img\" src={$serie['image']}></a></li>";
+                        }
+                    }
+                        ?>
+                </ul>
             </div>
         </section>
 
@@ -79,7 +98,15 @@ try {
             <p class="exercice-txt">Si l'URL de la page appelée comporte l'identifiant d'une série, alors afficher toutes les informations de la série ci-dessous.</p>
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
-                
+                <?php
+                $serieParam =$_GET['serie'];
+                array_map(function($serie){
+                    global $serieParam;
+                    if ($serieParam == $serie['id']){
+                        var_dump($serie);
+                    }
+                }, $series)              
+                ?>
             </div>
         </section>
 
@@ -88,7 +115,24 @@ try {
             <h2 class="exercice-ttl">Question 5</h2>
             <p class="exercice-txt">Récupérer dans un tableau l'ensemble des styles de séries dans une liste HTML. Afficher les par ordre alphabétique dans une liste HTML.</p>
             <div class="exercice-sandbox">
-                
+                <ul>
+                <?php
+                    $arrayStyles = [];
+                    foreach($series as $serie){
+                        foreach($serie['styles'] as $style){
+                            if (key_exists("$style", $arrayStyles))
+                            $arrayStyles[$style] += 1;
+                            else{
+                                $arrayStyles[$style] = 1;
+                            }
+                    };
+                }
+                foreach($arrayStyles as $style => $counts){
+                    echo "<li><a href=?style={$style}>{$style}({$counts})</a></li>";
+                }
+
+                ?>
+                </ul>
             </div>
         </section>
 

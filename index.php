@@ -231,7 +231,7 @@
                             };
                         
                         };
-                    echo "<p>$stockNamePlayer est le plus jeune avec un age de {$stockAge} ans</p>";
+                    echo "<p> {$stockNamePlayer} est le plus jeune avec un age de {$stockAge} ans</p>";
                         ?>
 
             </div>
