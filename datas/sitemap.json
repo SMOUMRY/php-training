@@ -1,0 +1,44 @@
+{
+    "index.php": {
+        "title": "Introduction PHP - Exo 1",
+        "link-content": "Introduction",
+        "href": "index.php",
+        "stylesheet": "css\/global.css",
+        "favicon": "img\/favicons\/numeric-1-box.svg"
+    },
+    "exo2.php": {
+        "title": "Introduction PHP - Exo 2",
+        "link-content": "Donnez moi des fruits",
+        "href": "exo2.php",
+        "stylesheet": "css\/global.css",
+        "favicon": "img\/favicons\/numeric-2-box.svg"
+    },
+    "exo3.php": {
+        "title": "Introduction PHP - Exo 3",
+        "link-content": "Donnez moi de la thune",
+        "href": "exo3.php",
+        "stylesheet": "css\/global.css",
+        "favicon": "img\/favicons\/numeric-3-box.svg"
+    },
+    "exo4.php": {
+        "title": "Introduction PHP - Exo 4",
+        "link-content": "Donnez moi des fonctions",
+        "href": "exo4.php",
+        "stylesheet": "css\/global.css",
+        "favicon": "img\/favicons\/numeric-4-box.svg"
+    },
+    "exo5.php": {
+        "title": "Introduction PHP - Exo 5",
+        "link-content": "Netflix",
+        "href": "exo5.php",
+        "stylesheet": "css\/global.css",
+        "favicon": "img\/favicons\/numeric-5-box.svg"
+    },
+    "exo6.php": {
+        "title": "Introduction PHP - Exo 6",
+        "link-content": "Mini Site",
+        "href": "exo6.php",
+        "stylesheet": "css\/global.css",
+        "favicon": "img\/favicons\/numeric-6-box.svg"
+    }
+}
