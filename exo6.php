@@ -1,4 +1,7 @@
-<?php include "includes/_head.php";?>
+<?php 
+include "includes/_head.php";
+require 'includes/_functions.php'
+?>
 
 
         <section class="exercice">
