@@ -109,3 +109,11 @@ function displayFirstArrayValue(array $array, int $int): array
 };
 
 
+function getArrayOfValueByKey(string $key): array{
+    global $series;
+    $array = array_unique(array_map(function ($serie) use($key) {
+        return $serie["$key"];
+    }, $series));
+    sort($array);
+    return $array;
+}

@@ -12,7 +12,7 @@ try {
 ?>
 
 <?php include "includes/_head.php";?>
-
+<?php include "includes/_functions.php";?>
 
         <section class="exercice">
             Sur cette page un fichier comportant les données de séries télé est importé côté serveur. (voir datas/series.json)
@@ -25,12 +25,7 @@ try {
             <p class="exercice-txt">Récupérer dans un tableau puis afficher l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
             <div class="exercice-sandbox">
                 <?php
-                $arrayAvailableOn = array_map(function ($serie) {
-                    return $serie['availableOn'];
-                }, $series);
-                $arrayAvailableOn = array_unique($arrayAvailableOn);
-                sort($arrayAvailableOn);
-                var_dump($arrayAvailableOn);
+                echo turnArrayToHtmlList(getArrayOfValueByKey('availableOn'));
                 ?>
             </div>
         </section>
@@ -74,7 +69,7 @@ try {
                 if (key_exists('serie', $_GET)) {
                     $serieDisplay = array_filter($series, function ($serie) {
                         $serieParam = $_GET['serie'];
-                        if ($serieParam == $serie['id']) echo "<li class='serie-link'><a href='?serie={$serie['id']}'><h3 class='serie-title'>{$serie['name']}</h3><img class='serie-img' src={$serie['image']}></a></li>";;
+                        if ($serieParam == $serie['id']) echo "<li class='serie-link'><a href='?serie={$serie['id']}'><h3 class='serie-title'>{$serie['name']}</h3><img class='serie-img' src={$serie['image']}></a></li>";
                     });
                 } else echo "Aucune série spécifiée";
 
